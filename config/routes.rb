@@ -13,3 +13,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 
 end
+
+root :to =>"homes#top"
+get "homes/about"=>"homes#about"
+
+resources :posts, only: [:index,:show,:edit,:create,:destroy,:update] do
+
+end
