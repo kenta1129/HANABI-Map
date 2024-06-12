@@ -12,11 +12,27 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
+namespace :admin do
+ root 'homes#top'
+ resources :genres, only: [:index, :create, :edit, :update]
+ resources :users, only: [:index, :show, :edit, :update]
 end
 
+
+devise_scope :user do
+ post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+end
+
+
+scope module: :public do
 root :to =>"homes#top"
 get "homes/about"=>"homes#about"
+ get 'my_page', to: 'customers#my_page', as: 'my_page'
+
+end
 
 resources :posts, only: [:index,:show,:edit,:create,:destroy,:update] do
+
+end
 
 end
