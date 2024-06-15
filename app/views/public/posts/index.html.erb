@@ -1,7 +1,22 @@
-<h1>投稿一覧</h1>
-
-<% @posts.each do |post| %>
-  <p>タイトル</p>
-  <span><%= post.body %></span>
-  
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <h1>Posts</h1>
+      <table>
+        <tbody>
+          <% @posts.each do |post| %>
+            <div>
+              <p>本文：<%= post.body %></p>
+              <p>ユーザーネーム：<%= post.user.name %></p>
+            </div>
+            <%= link_to "Show", post_path(post.id) %>
+            <% if post.user == current_user %>
+              <%= link_to "Edit", edit_post_path(post.id) %>
+              <%= link_to "削除", post_path(post), method: :delete %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

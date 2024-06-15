@@ -4,6 +4,32 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+ def new
+    super
+ end
+
+  # POST /resource
+ def create
+    super
+ end
+
+def after_sign_up_path_for(resource)
+     user_path(current_user.id)
+end
+
+  protected
+
+ def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys:[:name])
+ end
+
+ def configure_permitted_parameters
+    added_attrs = [:name, :email, :password, :password_confirmation, :remember_me]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+ end
+
+
   # GET /resource/sign_up
   # def new
   #   super

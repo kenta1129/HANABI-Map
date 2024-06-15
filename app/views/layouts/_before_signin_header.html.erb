@@ -1,0 +1,26 @@
+           <li>
+           <%= link_to root_path,class: "nav-link text-light" do %>
+              <i class="fas fa-home"></i> Home
+            <% end %>
+          </li>
+            <li>
+             <%= link_to homes_about_path,class: "nav-link text-light" do %>
+              <i class="fas fa-link"></i> About
+            <% end %>
+          </li>
+           <li>
+             <%= link_to new_user_registration_path,class: "nav-link text-light" do %>
+              <i class="fas fa-user-plus"></i> Sign up
+            <% end %>
+          </li>
+          <li>
+               <%= link_to new_user_session_path,class: "nav-link text-light" do %>
+              <i class="fas fa-sign-in-alt"></i> Log in
+            <% end %>
+          </li>
+           <li>
+            <%= link_to new_admin_session_path,class: "nav-link text-light" do %>
+              <i class="fas fa-sign-in-alt"></i> 管理者
+            <% end %>
+            
+          </li>

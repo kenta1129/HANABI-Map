@@ -27,11 +27,14 @@ end
 scope module: :public do
 root :to =>"homes#top"
 get "homes/about"=>"homes#about"
- get 'my_page', to: 'customers#my_page', as: 'my_page'
+
+resources :users 
+resources :posts, only: [:index,:show,:edit,:new,:create,:destroy,:update] do
+
 
 end
 
-resources :posts, only: [:index,:show,:edit,:create,:destroy,:update] do
+
 
 end
 

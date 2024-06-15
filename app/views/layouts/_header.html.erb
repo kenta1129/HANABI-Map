@@ -1,0 +1,26 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <span>HANABI-Map</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+             <% if admin_signed_in? %>
+                <%= render 'layouts/admin_header' %>
+              <% elsif user_signed_in? %>
+                <%= render 'layouts/user_header' %>
+              <% else %>
+                <%= render 'layouts/before_signin_header' %>
+              <% end %>
+            </ul>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

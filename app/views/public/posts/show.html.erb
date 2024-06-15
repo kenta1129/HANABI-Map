@@ -1,0 +1,11 @@
+<hi>本文</hi>
+
+<p><%= @post.body %></p>
+
+
+<%= link_to "Back", posts_path %>
+
+<% if @post.user == current_user %>
+<%= link_to "Edit", edit_post_path(@post.id) %>
+<%= link_to "削除", post_path(@post), method: :delete %>
+<% end %>
