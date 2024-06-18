@@ -27,12 +27,14 @@ end
 scope module: :public do
 root :to =>"homes#top"
 get "homes/about"=>"homes#about"
+get '/search', to: 'searches#search', as: 'search'
 
 resources :users do
 get 'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
       patch 'withdraw', to: 'users#withdraw', as: 'withdraw'
 
 end
+
 
 
 resources :posts, only: [:index,:show,:edit,:new,:create,:destroy,:update] do
