@@ -39,6 +39,8 @@ end
 
 resources :posts, only: [:index,:show,:edit,:new,:create,:destroy,:update] do
 
+resources :post_comments, only: [:create, :destroy]
+
 
 end
 
