@@ -26,6 +26,7 @@ end
 
 def show
    @post = Post.find(params[:id])
+   @posts = Post.all
    @user = @post.user
    @post_comment = PostComment.new
 end
