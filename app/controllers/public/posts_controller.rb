@@ -1,7 +1,6 @@
 class Public::PostsController < ApplicationController
   
 def index
-  @user = current_user
   @post = Post.new
   @posts = Post.all
 end
@@ -26,8 +25,6 @@ end
 
 def show
    @post = Post.find(params[:id])
-   @posts = Post.all
-   @user = @post.user
    @post_comment = PostComment.new
 end
 
