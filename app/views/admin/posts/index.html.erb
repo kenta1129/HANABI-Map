@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <h1>Posts</h1>
+      <table>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td>
+                <p>本文：<%= post.body %></p>
+                <p>ユーザーネーム：<%= post.user.name %></p>
+                <%= link_to "Show", post_path(post.id) %>
+                <%= link_to "Destroy", admin_post_path(post), method: :delete, data: { confirm: "本当に消しますか？" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
