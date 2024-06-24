@@ -17,6 +17,11 @@
   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name"%>
   <br>
   
+   <div class="form-group">
+        <%= f.label :image %>
+        <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+      </div>
+  
   <br>
   <%= f.submit "Update User", class:"btn btn-secondary" %>
     <% end %>

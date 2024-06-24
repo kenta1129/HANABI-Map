@@ -3,7 +3,6 @@ class Public::UsersController < ApplicationController
 def show
   @user = User.find(params[:id])
   @posts = @user.posts
-  @post = Post.new
 end
 
 def edit
@@ -21,10 +20,7 @@ def update
 end
 
 def index
-  @user = current_user
   @users = User.all
-  @post =Post.new
-  @posts = Post.all
 end
 
 def unsubscribe
@@ -42,7 +38,7 @@ end
  private
 
   def user_params
-    params.require(:user).permit(:name )
+    params.require(:user).permit(:name, :profile_image )
   end
 
 

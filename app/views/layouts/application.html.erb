@@ -11,11 +11,12 @@
     <script src="https://kit.fontawesome.com/b50421887c.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  
     <%= render 'layouts/header' %>
-     <div>
+    
+       <div>
       <%= flash[:notice]%>
     <%= yield %>
-   </div>
+     </div>
   </body>
 </html>

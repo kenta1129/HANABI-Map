@@ -16,6 +16,8 @@ namespace :admin do
  root 'homes#top'
  resources :genres, only: [:index, :create, :edit, :update]
  resources :users, only: [:index, :show, :edit, :update]
+ resources :posts, only: [:index,:show,:destroy]
+ resources :post_comments, only: [:destroy]
 end
 
 
@@ -27,16 +29,14 @@ end
 scope module: :public do
 root :to =>"homes#top"
 get "homes/about"=>"homes#about"
+get '/search', to: 'searches#search', as: 'search'
+
+resources :posts, only: [:index,:show,:edit,:new,:create,:destroy,:update]
+resources :post_comments, only: [:create, :destroy]
 
 resources :users do
 get 'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
       patch 'withdraw', to: 'users#withdraw', as: 'withdraw'
-
-end
-
-
-resources :posts, only: [:index,:show,:edit,:new,:create,:destroy,:update] do
-
 
 end
 
