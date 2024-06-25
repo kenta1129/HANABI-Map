@@ -8,14 +8,12 @@ devise_for :users,skip: [:passwords], controllers: {
 }
 
 
-
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
 namespace :admin do
  root 'homes#top'
- resources :genres, only: [:index, :create, :edit, :update]
  resources :users, only: [:index, :show, :edit, :update]
  resources :posts, only: [:index,:show,:destroy]
  resources :post_comments, only: [:create,:destroy]
