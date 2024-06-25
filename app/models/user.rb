@@ -10,7 +10,6 @@ class User < ApplicationRecord
  
  has_one_attached :profile_image
 
-GUEST_USER_EMAIL = "guest@example.com"
 
 def user_status
     is_active ? "有効" : "退会"
@@ -40,6 +39,7 @@ def get_profile_image
     profile_image.variant(resize_to_limit: [50, 50]).processed
 end
 
+GUEST_USER_EMAIL = "guest@example.com"
 
 def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
@@ -47,5 +47,10 @@ def self.guest
       user.name = "guestuser"
     end
 end
+
+def guest_user?
+    email == GUEST_USER_EMAIL
+end
+
 
 end

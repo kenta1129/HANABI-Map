@@ -8,6 +8,7 @@ devise_for :users,skip: [:passwords], controllers: {
 }
 
 
+
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
@@ -20,10 +21,10 @@ namespace :admin do
  resources :post_comments, only: [:create,:destroy]
 end
 
-
 devise_scope :user do
- post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+ post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
 end
+
 
 
 scope module: :public do
@@ -31,12 +32,13 @@ root :to =>"homes#top"
 get "homes/about"=>"homes#about"
 get '/search', to: 'searches#search', as: 'search'
 
-resources :posts, only: [:index,:show,:edit,:new,:create,:destroy,:update]
+resources :posts, only: [:index,:show,:edit,:new,:create,:destroy,:update] do
 resources :post_comments, only: [:create, :destroy]
-
+end
 resources :users do
 get 'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
       patch 'withdraw', to: 'users#withdraw', as: 'withdraw'
+ 
 
 end
 

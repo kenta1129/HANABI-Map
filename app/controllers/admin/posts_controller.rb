@@ -1,18 +1,14 @@
 class Admin::PostsController < ApplicationController
 
- def index
-   
-   @posts = Post.all
- 
- end
+  def index
+    @posts = Post.all
+  end
 
   def show
-    
     @post = Post.find(params[:id])
     @posts = Post.all
     @user = @post.user
     @post_comments = PostComment.all
-    
   end
 
   def update
@@ -25,17 +21,17 @@ class Admin::PostsController < ApplicationController
       render :show
       
     end
-    
+  end
     
   def destroy
     
-   @post.destroy
-   flash[:notice] = "Post was successfully destroyed."
-   redirect_to admin_posts_path
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = "Post was successfully destroyed."
+    redirect_to admin_posts_path
    
   end
     
-  end
 
   private
 
