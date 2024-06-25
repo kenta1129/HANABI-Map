@@ -1,7 +1,6 @@
 class Public::PostsController < ApplicationController
-  
-# before_action :authenticate_user!
-# before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+before_action :authenticate_user!
+before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   
 def index
   @posts = Post.all
@@ -15,11 +14,8 @@ def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-    flash[:notice] = "You have created post successfully."
-    redirect_to post_path(@post)
-    
+    redirect_to post_path(@post), notice: "You have created post successfully."
     else
-     @user = current_user
      @posts = Post.all
     render:index
     end

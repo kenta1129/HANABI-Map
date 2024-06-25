@@ -17,7 +17,7 @@ namespace :admin do
  resources :genres, only: [:index, :create, :edit, :update]
  resources :users, only: [:index, :show, :edit, :update]
  resources :posts, only: [:index,:show,:destroy]
- resources :post_comments, only: [:destroy]
+ resources :post_comments, only: [:create,:destroy]
 end
 
 

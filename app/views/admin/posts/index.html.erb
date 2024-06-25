@@ -5,14 +5,12 @@
       <table>
         <tbody>
           <% @posts.each do |post| %>
-            <tr>
-              <td>
+           <div>
                 <p>本文：<%= post.body %></p>
                 <p>ユーザーネーム：<%= post.user.name %></p>
-                <%= link_to "Show", post_path(post.id) %>
+                </div>
+                <%= link_to "Show", admin_post_path(post.id) %>
                 <%= link_to "Destroy", admin_post_path(post), method: :delete, data: { confirm: "本当に消しますか？" } %>
-              </td>
-            </tr>
           <% end %>
         </tbody>
       </table>
