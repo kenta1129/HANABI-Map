@@ -6,7 +6,8 @@
         <tbody>
           <% @posts.each do |post| %>
            <div>
-                <p>本文：<%= post.body %></p>
+             　<p>店名：<%= post.title %></p>
+                <p>内容：<%= post.body %></p>
                 <p>ユーザーネーム：<%= post.user.name %></p>
                 </div>
                 <%= link_to "Show", admin_post_path(post.id) %>

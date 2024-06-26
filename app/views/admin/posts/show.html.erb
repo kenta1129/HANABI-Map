@@ -5,6 +5,7 @@
       <table class='table'>
         <tr>
           <td><%= @post.user.name %></td>
+          <td><%= @post.title %></td>
           <td><%= @post.body %></td>
           <td class="post-comments-counter">
             <%= render "admin/post_comments/counter", post: @post %>

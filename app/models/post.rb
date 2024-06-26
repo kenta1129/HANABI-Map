@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   
   has_one_attached :profile_image
   
+  validates :title, {presence: true}
   validates :body, {presence: true, length: {maximum:200}}
   
   def self.search_for(content, method)
