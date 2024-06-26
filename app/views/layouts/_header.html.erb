@@ -9,17 +9,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-             <% if admin_signed_in? %>
-                <%= render 'layouts/admin_header' %>
-              <% elsif user_signed_in? %>
-                <%= render 'layouts/user_header' %>
-              <% else %>
-                <%= render 'layouts/before_signin_header' %>
-              <% end %>
-            </ul>
-           </div>
-          </div>
-        </div>
+          <% if admin_signed_in? %>
+            <%= render 'layouts/admin_header' %>
+          <% elsif user_signed_in? %>
+            <%= render 'layouts/user_header' %>
+          <% else %>
+            <%= render 'layouts/before_signin_header' %>
+          <% end %>
+        </ul>
       </div>
     </div>
   </nav>

@@ -1,43 +1,35 @@
- <% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"><%= message %></div>
-    <% end %>
-    
- <% if @post.errors.any? %>
-  <%= @post.errors.count %>error prohibited this book from being saved:
+<% flash.each do |message_type, message| %>
+  <div class="flash-message <%= message_type %>"><%= message %></div>
+<% end %>
+
+<% if @post.errors.any? %>
+  <%= @post.errors.count %> error prohibited this book from being saved:
   <ul>
     <% @post.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
 <% end %>
-　　<div class="container">
-　　<div class="row">
-　　  <div class="col-Ig-5 px-5 px-sm-0 mx-auto" >
-    <h1>Editing Post</h1>
-   <br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Editing Post</h1>
+      <br>
       <%= form_with model: @post do |f| %>
-  
-  <h7>店名</h7>
-   
-    <br />
-  
-   <%= f.text_area :title %>
-    
-    <br />
-  
-   <h7>内容</h7>
-   
-    <br />
-  
-   <%= f.text_area :body %>
-    
-    <br />
-    
-  <%= f.submit "Update Post", class:"btn btn-success" %>
-    <% end %>
+        <h7>店名</h7>
+        <br />
+        <%= f.text_area :title %>
+        <br />
+        <h7>内容</h7>
+        <br />
+        <%= f.text_area :body %>
+        <br />
+        <%= f.submit "Update Post", class: "btn btn-success" %>
+      <% end %>
       <br />
-      <%= link_to "Show", post_path(@post) %>
-      |
+      <%= link_to "Show", post_path(@post) %> |
       <%= link_to "Back", posts_path %>
     </div>
+  </div>
 </div>

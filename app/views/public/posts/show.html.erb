@@ -2,29 +2,33 @@
   <div class='row'>
     <h2>Post</h2>
     <div class='col-md-8 offset-md-1'>
-    <table class='table'>
-      <tr>
-        <td>
-          <%= link_to(@post.user) do %>
-            <%= image_tag @post.user.get_profile_image, size: "50x50" %><br>
-            <%= @post.user.name %>
+      <table class='table'>
+        <tr>
+          <td>
+            <%= link_to(@post.user) do %>
+              <%= image_tag @post.user.get_profile_image, size: "50x50" %><br>
+              <%= @post.user.name %>
+            <% end %>
+          </td>
+          <td><%= @post.title %></td>
+          <td><%= @post.body %></td>
+          <td class="post-comments-counter">
+            <%= render "public/post_comments/counter", post: @post %>
+          </td>
+          <% if @post.user == current_user %>
+            <td>
+              <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %> 
+            </td>
+            <td>
+              <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %>
+            </td>
           <% end %>
-        </td>
-        <td><%= @post.title %></td>
-        <td><%= @post.body %></td>
-        <td class="post-comments-counter">
-          <%= render "public/post_comments/counter", post: @post %>
-        </td>
-        <% if @post.user == current_user %>
-          <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %> </td>
-          <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}"%></td>
-        <% end %>
-      </tr>
-    </table>
-    <div class="post-comments-index">
-      <%= render "public/post_comments/index", post: @post %>
+        </tr>
+      </table>
+      <div class="post-comments-index">
+        <%= render "public/post_comments/index", post: @post %>
+      </div>
+      <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
     </div>
-    <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
   </div>
-</div>
 </div>
