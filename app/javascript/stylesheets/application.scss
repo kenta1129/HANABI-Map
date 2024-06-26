@@ -1,1 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
+
+html, body {
+  background: linear-gradient(-45deg, #E8C5ED, #EDC5DE) !important;
+}
