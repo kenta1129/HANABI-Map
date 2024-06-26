@@ -12,6 +12,9 @@
           </td>
           <td><%= @post.title %></td>
           <td><%= @post.body %></td>
+          <td id="favorite_btn_<%= @post.id %>">
+          <%= render "public/favorites/btn", post: @post %>
+          </td>
           <td class="post-comments-counter">
             <%= render "public/post_comments/counter", post: @post %>
           </td>

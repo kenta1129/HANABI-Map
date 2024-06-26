@@ -32,6 +32,7 @@ get '/search', to: 'searches#search', as: 'search'
 
 resources :posts, only: [:index,:show,:edit,:new,:create,:destroy,:update] do
 resources :post_comments, only: [:create, :destroy]
+resource :favorites, only: [:create, :destroy]
 end
 resources :users do
 get 'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
