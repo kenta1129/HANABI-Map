@@ -38,10 +38,13 @@ resources :users do
 get 'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
       patch 'withdraw', to: 'users#withdraw', as: 'withdraw'
  
+member do
+   
+get :favorites
 
 end
 
-
+end
 
 end
 
