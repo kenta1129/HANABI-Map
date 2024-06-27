@@ -2,19 +2,29 @@
   <div class="row">
     <div class="col-md-8 offset-md-1">
       <h1>Posts</h1>
-      <table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ユーザーネーム</th>
+            <th>店名</th>
+            <th>内容</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
         <tbody>
           <% @posts.each do |post| %>
-            <div>
-              <p>店名：<%= post.title %></p>
-              <p>内容：<%= post.body %></p>
-              <p>ユーザーネーム：<%= post.user.name %></p>
-            </div>
-            <%= link_to "Show", post_path(post.id) %>
-            <% if post.user == current_user %>
-              <%= link_to "Edit", edit_post_path(post.id) %>
-              <%= link_to "Destroy", post_path(post), method: :delete, data: {confirm: "本当に消しますか？"} %>
-            <% end %>
+            <tr>
+              <td><%= post.user.name %></td>
+              <td><%= post.title %></td>
+              <td><%= post.body %></td>
+              <td><%= link_to "Show", post_path(post.id) %></td>
+              <% if post.user == current_user %>
+                <td><%= link_to "Edit", edit_post_path(post.id) %></td>
+                <td><%= link_to "Destroy", post_path(post), method: :delete, data: { confirm: "本当に消しますか？" } %></td>
+              <% end %>
+            </tr>
           <% end %>
         </tbody>
       </table>

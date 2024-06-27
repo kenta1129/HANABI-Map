@@ -1,11 +1,25 @@
-<table class="table">
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <h1>Favorite Posts</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ユーザーネーム</th>
+            <th>店名</th>
+            <th>内容</th>
+          </tr>
+        </thead>
         <tbody>
           <% @favorite_posts.each do |post| %>
-          <tr>
-            <td>
-              <%= link_to post.title, post_path(@post) %>
-            </td>
-          </tr>
+            <tr>
+              <td><%= link_to post.user.name,user_path(@user.id) %></td>
+              <td><%= link_to post.title, post_path(@post) %></td>
+              <td><%= post.body %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
