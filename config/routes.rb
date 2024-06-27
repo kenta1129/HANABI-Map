@@ -37,6 +37,10 @@ end
 resources :users do
 get 'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
       patch 'withdraw', to: 'users#withdraw', as: 'withdraw'
+      
+resource :relationships, only: [:create, :destroy]
+get "followings" => "relationships#followings", as: "followings"
+get "followers" => "relationships#followers", as: "followers"
  
 member do
    
