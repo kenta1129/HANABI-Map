@@ -3,12 +3,12 @@ before_action :authenticate_admin!
 
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
   end
 
   def show
     @post = Post.find(params[:id])
-    @posts = Post.all
+    @posts = Post.page(params[:page])
     @user = @post.user
     @post_comments = PostComment.all
   end
@@ -29,7 +29,7 @@ before_action :authenticate_admin!
     
     @post = Post.find(params[:id])
     @post.destroy
-    flash[:notice] = "Post was successfully destroyed."
+    flash[:notice] = "投稿の削除に成功しました。."
     redirect_to admin_posts_path
    
   end

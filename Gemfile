@@ -67,3 +67,5 @@ gem "net-pop"
 gem "net-imap" 
 
 gem 'image_processing', '~> 1.2'
+
+gem 'kaminari','~> 1.2.1'
