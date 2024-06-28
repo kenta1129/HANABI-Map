@@ -5,6 +5,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th>プロフィール画像</th>
             <th>ユーザーネーム</th>
             <th>店名</th>
             <th>内容</th>
@@ -16,6 +17,7 @@
         <tbody>
           <% @posts.each do |post| %>
             <tr>
+              <td><%= image_tag post.user.get_profile_image, size: "50x50" %></td>
               <td><%= post.user.name %></td>
               <td><%= post.title %></td>
               <td><%= post.body %></td>
