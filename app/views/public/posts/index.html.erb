@@ -12,6 +12,7 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +22,9 @@
               <td><%= post.user.name %></td>
               <td><%= post.title %></td>
               <td><%= post.body %></td>
+              <td id="favorite_btn_<%= post.id %>">
+          <%= render "public/favorites/btn", post: post %>
+          </td>
               <td><%= link_to "Show", post_path(post.id) %></td>
               <% if post.user == current_user %>
                 <td><%= link_to "Edit", edit_post_path(post.id) %></td>
