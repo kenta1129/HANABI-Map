@@ -35,3 +35,38 @@
   display: inline-block;
   text-align: left;
 }
+
+.button-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+a.username-link {
+    color: #6A0DAD;
+}
+
+a.title-link {
+    color: #6A0DAD; 
+}
+
+.h4 {
+  color: #6a0dad; 
+}
+
+.post-user-name {
+  color: #6a0dad; 
+}
+
+.pagination>li>a {          
+  border: none;     
+  color: #696969;   
+}
+
+.pagination>.active>a {     
+  background: #93c9ff;     
+  border-radius: 15px;     
+}
+
+.pagination>li>a:hover {        
+  border-radius: 15px;   
+}

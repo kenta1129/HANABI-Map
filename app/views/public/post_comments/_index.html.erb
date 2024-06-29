@@ -1,10 +1,9 @@
 <table>
   <tbody>
-      <% post.post_comments.each do |post_comment| %>
+    <% post.post_comments.each do |post_comment| %>
       <tr>
-        
         <td>
-          <%= link_to user_path(post_comment.user) do %>
+          <%= link_to user_path(post_comment.user), style: "color: #6A0DAD;" do %>
             <%= image_tag post_comment.user.get_profile_image, size: "50x50" %><br>
             <%= post_comment.user.name %>
           <% end %>
@@ -16,6 +15,6 @@
           <% end %>
         </td>
       </tr>
-      <% end %>
+    <% end %>
   </tbody>
 </table>
