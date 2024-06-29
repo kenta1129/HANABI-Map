@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page])
   end
 
   def edit
@@ -13,15 +13,16 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "You have updated user successfully."
+      flash[:notice] = "更新に成功しました"
       redirect_to user_path(@user)
     else
+      flash[:alert] = "更新に失敗しました"
       render :edit
     end
   end
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def unsubscribe
@@ -33,6 +34,12 @@ class Public::UsersController < ApplicationController
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
+  end
+  
+  def favorites 
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
   end
 
   private

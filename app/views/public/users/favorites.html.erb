@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <h1>Favorite Posts</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>プロフィール画像</th>
+            <th>ユーザーネーム</th>
+            <th>店名</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @favorite_posts.each do |post| %>
+            <tr>
+              <td><%= image_tag post.user.get_profile_image, size: "50x50" %></td>
+              <td><%= link_to post.user.name, user_path(post.user.id), class: 'username-link' %></td>
+              <td><%= link_to post.title, post_path(post), class: 'title-link' %></td>
+              <td><%= post.body %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

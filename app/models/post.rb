@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   
   has_many :post_comments, dependent: :destroy
   
+  has_many :favorites, dependent: :destroy
+  
   has_one_attached :profile_image
   
   validates :title, {presence: true}
@@ -20,6 +22,11 @@ class Post < ApplicationRecord
       Post.where('name LIKE ?', '%' + content + '%')
     end
   end
+  
+  def favorited_by?(user)
+     favorites.exists?(user_id: user.id)
+  end
+  
   
   
   def get_profile_image

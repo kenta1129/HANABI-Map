@@ -1,24 +1,29 @@
-<h1>New post</h1>
+<h1 class="center">New post</h1>
 
 <% if @post.errors.any? %>
-  <%= @post.errors.count %> error prohibited this post from being saved:
-  <ul>
-    <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+  <div class="center">
+    <%= @post.errors.count %> error prohibited this post from being saved:
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
-<%= form_with model: @post do |f| %>
-  <div>
-    <h7>店名</h7>
-    <%= f.text_area :title %>
-  </div>
-  <br>
-  <div>
-    <h7>内容</h7>
-    <%= f.text_area :body %>
-  </div>
-  <br>
-  <%= f.submit 'Create Post' %>
-<% end %>
+<div class="center">
+  <%= form_with model: @post do |f| %>
+    <div>
+      <h7>店名</h7>
+      <%= f.text_area :title %>
+    </div>
+    <br>
+    <div>
+      <h7>内容</h7>
+      <%= f.text_area :body %>
+    </div>
+    <br>
+    <div class="button-container">
+    <%= f.submit 'Create Post', class: "btn btn-success" %>
+  <% end %>
+</div>

@@ -7,17 +7,20 @@
           <td>
             <%= link_to(@post.user) do %>
               <%= image_tag @post.user.get_profile_image, size: "50x50" %><br>
-              <%= @post.user.name %>
+              <span class="post-user-name"><%= @post.user.name %></span>
             <% end %>
           </td>
           <td><%= @post.title %></td>
           <td><%= @post.body %></td>
+          <td id="favorite_btn_<%= @post.id %>">
+            <%= render "public/favorites/btn", post: @post %>
+          </td>
           <td class="post-comments-counter">
             <%= render "public/post_comments/counter", post: @post %>
           </td>
           <% if @post.user == current_user %>
             <td>
-              <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %> 
+              <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-warning edit_post_#{@post.id}" %> 
             </td>
             <td>
               <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %>

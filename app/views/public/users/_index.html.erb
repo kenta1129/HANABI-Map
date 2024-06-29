@@ -1,8 +1,8 @@
 <table class='table'>
   <thead>
     <tr>
-      <!--<th>image</th>-->
-      <th>name</th>
+      <th>プロフィール画像</th>
+      <th>ユーザーネーム</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,9 +14,10 @@
       <tr>
         <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
         <td><%= user.name %></td>
-        <td>
-        </td>
-        <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+        <td>フォロー数: <%= user.followings.count %></td>
+        <td>フォロワー数: <%= user.followers.count %></td>
+        <td><%= render "public/relationships/btn", user: user, options: { class: "" } %></td>
+        <td><%= link_to 'Show', user, class: "user_#{user.id}", class: "btn btn-info btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
