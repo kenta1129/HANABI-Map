@@ -12,14 +12,16 @@
               <th>ステータス</th>
             </tr>
           </thead>
-          <% @users.each do |user| %>
-            <tr>
-              <td><%= user.id %></td>
-              <td><%= link_to user.name, admin_user_path(user) %></td>
-              <td><%= user.email %></td>
-              <td><%= user.user_status %></td>
-            </tr>
-          <% end %>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= link_to user.name, admin_user_path(user), class: 'dark-purple-link' %></td>
+                <td><%= user.email %></td>
+                <td><%= user.user_status %></td>
+              </tr>
+            <% end %>
+          </tbody>
         </table>
     </div>
   </div>
