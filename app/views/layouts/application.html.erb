@@ -13,10 +13,11 @@
   </head>
 <body class="d-flex flex-column vh-100">
   <main class="mb-auto">
+    <p id="notice"><%= flash[:notice] %></p>
+      <p id="alert"><%= flash[:alert] %></p>
     <%= render 'layouts/header' %>
     
-      <p class="notice"><%= notice %></p>
-  　　<p class="alert"><%= alert %></p>
+      
       
     <%= yield %>
     </main>

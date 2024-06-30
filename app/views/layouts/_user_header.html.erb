@@ -1,34 +1,34 @@
-         <li>
-            <%= link_to user_path(current_user),class: "nav-link text-light" do %>
-              <i class="fas fa-home"></i> Home
-            <% end %>
-          </li>
-            <li>
-             <%= link_to new_post_path,class: "nav-link text-light" do %>
-              <i class="fa-solid fa-broom"></i> Post
-            <% end %>
-          </li>
-           <li>
-            <%= link_to users_path,class: "nav-link text-light" do %>
-              <i class="fas fa-users"></i> Users
-            <% end %>
-          </li>
-          <li>
-             <%= link_to posts_path,class: "nav-link text-light" do %>
-              <i class="fa-solid fa-fire"></i> Posts
-            <% end %>
-          </li>
-           <li>
-             <%= link_to favorites_user_path(current_user),class: "nav-link text-light" do %>
-              <i class="fa-solid fa-heart"></i></i> いいね一覧
-            <% end %>
-          </li>
-           <li>
-            <%= link_to destroy_user_session_path, method: :delete,class: "nav-link text-light" do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
-            <% end %>
-          </li>
-          
-          <div class="d-flex justify-content-center mb-2">
+<li>
+  <%= link_to user_path(current_user), class: "nav-link text-light small-text" do %>
+    <i class="fas fa-home"></i>ホーム
+  <% end %>
+</li>
+<li>
+  <%= link_to new_post_path, class: "nav-link text-light small-text" do %>
+    <i class="fa-solid fa-broom"></i>新規投稿
+  <% end %>
+</li>
+<li>
+  <%= link_to users_path, class: "nav-link text-light small-text" do %>
+    <i class="fas fa-users"></i>会員一覧
+  <% end %>
+</li>
+<li>
+  <%= link_to posts_path, class: "nav-link text-light small-text" do %>
+    <i class="fa-solid fa-fire"></i>投稿一覧
+  <% end %>
+</li>
+<li>
+  <%= link_to favorites_user_path(current_user), class: "nav-link text-light small-text" do %>
+    <i class="fa-solid fa-heart"></i>いいね一覧
+  <% end %>
+</li>
+<li>
+  <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light small-text" do %>
+    <i class="fas fa-sign-out-alt"></i>ログアウト
+  <% end %>
+</li>
+
+<div class="d-flex justify-content-center mb-2">
           <%= render "public/searches/form" %>
           </div>

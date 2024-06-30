@@ -18,6 +18,7 @@
           <td class="post-comments-counter">
             <%= render "public/post_comments/counter", post: @post %>
           </td>
+          <td>閲覧数: <%= @post.view_count %></td>
           <% if @post.user == current_user %>
             <td>
               <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-warning edit_post_#{@post.id}" %> 

@@ -1,6 +1,21 @@
+<style>
+  .main-visual {
+    margin-top: 0;
+  }
+  .main-visual img {
+    display: block;
+    margin: 0 auto; 
+  .container {
+    padding-top: 0; 
+  }
+</style>
+
+<div class="main-visual">
+  <%= image_tag @photo_url, alt: "Main Visual" %>
+</div>
 <div class="container">
   <div class="row">
-    <div class="col-md-10 offset-md-1">
+    <div class="col-md-15 offset-md-1">
       <h1>投稿一覧</h1>
       <table class="table">
         <thead>
@@ -9,6 +24,7 @@
             <th>ユーザーネーム</th>
             <th>店名</th>
             <th>内容</th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -23,8 +39,9 @@
               <td><%= post.title %></td>
               <td><%= post.body %></td>
               <td id="favorite_btn_<%= post.id %>">
-          <%= render "public/favorites/btn", post: post %>
-          </td>
+                <%= render "public/favorites/btn", post: post %>
+              </td>
+              <td>閲覧数: <%= post.view_count %></td>
               <td><%= link_to "投稿詳細", post_path(post.id), class: "btn btn-info btn-sm" %></td>
               <% if post.user == current_user %>
                 <td><%= link_to "投稿編集", edit_post_path(post.id), class: "btn btn-warning btn-sm" %></td>

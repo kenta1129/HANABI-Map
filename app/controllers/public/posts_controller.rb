@@ -4,6 +4,7 @@ class Public::PostsController < ApplicationController
   
   def index
     @posts = Post.page(params[:page])
+    @photo_url = "360_F_284557081_Tb4aC3mUFKZMcShrfIhz6ojaJckAvT9E.jpg"
   end
 
   def new
@@ -25,6 +26,8 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+    @post.increment!(:view_count)
+    @photo_url = "360_F_284557081_Tb4aC3mUFKZMcShrfIhz6ojaJckAvT9E.jpg"
   end
 
   def edit

@@ -76,3 +76,20 @@ a.title-link {
   display: flex;
   justify-content: center;
 }
+
+.small-text {
+  font-size: 14px; 
+}
+
+.main-visual {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.main-visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

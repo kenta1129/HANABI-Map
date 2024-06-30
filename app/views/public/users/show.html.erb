@@ -1,46 +1,62 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <table class='table table-hover table-inverse'>
+<div class='container'>
+  <div class='row text-center'>
+    <div class="col">
       <h2><%= @user.name %>さんの投稿一覧</h2>
+
+      <div class="row">
+        <div class="col">
+          <h3>フォロー中:</h3>
+          <%= link_to @user.followings.count, user_followings_path(@user), class: "h3" %>
+        </div>
+        <div class="col">
+          <h3>フォロワー:</h3>
+          <%= link_to @user.followers.count, user_followers_path(@user), class: "h3" %>
+        </div>
+      </div>
+
+      <% if @user == current_user %>
+        <div class="row">
+          <div class="col">
+            <%= link_to "", edit_user_path(@user), class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id}" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>店名</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td><%= post.title %></td>
+              <td><%= post.body %></td>
+              <td>閲覧数: <%= post.view_count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <% if user_signed_in? %>
+        <% unless @user.guest_user? %>
+          <td><%= render "public/relationships/btn", user: @user, options: { class: "" } %></td>
+        <% end %>
+
+        <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
+          <%= link_to 'DM開始', chat_path(@user.id), class: "btn btn-dark btn-sm" %>
+        <% end %>
+      <% end %>
 
       <% if @user == current_user && !@user.guest_user? %>
         <li><%= link_to "退会する", user_unsubscribe_path(@user), class: "btn btn-danger" %></li>
       <% end %>
-      <h3>__</h3>
-      <h3>フォロー中:</h3>
-      <%= link_to @user.followings.count, user_followings_path(@user), class: "h3" %>
-      <h3>フォロワー:</h3>
-      <%= link_to @user.followers.count, user_followers_path(@user), class: "h3" %>
-
-      <thead>
-        <tr>
-          <th>店名</th>
-          <th>内容</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @posts.each do |post| %>
-          <tr>
-            <td><%= post.title %></td>
-            <td><%= post.body %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <% if user_signed_in? %>
-      <% unless @user.guest_user? %>
-        <td><%= render "public/relationships/btn", user: @user, options: { class: "" } %></td>
-      <% end %>
-      <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
-        <%= link_to 'DM開始', chat_path(@user.id), class: "btn btn-dark btn-sm" %>
-      <% end %>
-      <% if @user == current_user %>
-        <div class="row">
-          <i class="fas fa-user-cog"></i>
-          <%= link_to "", edit_user_path(@user), class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@user.id}" %>
-        </div>
-      <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
