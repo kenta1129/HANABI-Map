@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
-    <h2>Post</h2>
-    <div class='col-md-8 offset-md-1'>
+    <h3><%= @post.user.name %>さんの投稿詳細</h3>
+    <div class='col-md-10 offset-md-1'>
       <table class='table'>
         <tr>
           <td><%= @post.user.name %></td>
@@ -11,7 +11,7 @@
             <%= render "admin/post_comments/counter", post: @post %>
           </td>
           <td>
-             <%= link_to "Destroy", admin_post_path(@post), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %>
+             <%= link_to "削除", admin_post_path(@post), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %>
           </td>
         </tr>
       </table>

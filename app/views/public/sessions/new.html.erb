@@ -1,5 +1,5 @@
 <div class="center-form">
-  <h2>Log in</h2>
+  <h2>ログイン</h2>
 
   <%= form_with model: @user, url: user_session_path do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
@@ -22,9 +22,9 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Log in", class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+      <%= f.submit "ログイン", class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
     </div>
   <% end %>
 
-  <%= render "public/shared/links" %>
+  <p>まだ会員でない方は</p><%= render "public/shared/links" %>
 </div>

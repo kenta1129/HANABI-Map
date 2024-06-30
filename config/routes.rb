@@ -30,6 +30,8 @@ root :to =>"homes#top"
 get "homes/about"=>"homes#about"
 get '/search', to: 'searches#search', as: 'search'
 
+resources :chats, only: [:show, :create, :destroy]
+
 resources :posts, only: [:index,:show,:edit,:new,:create,:destroy,:update] do
 resources :post_comments, only: [:create, :destroy]
 resource :favorites, only: [:create, :destroy]
@@ -37,6 +39,7 @@ end
 resources :users do
 get 'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
       patch 'withdraw', to: 'users#withdraw', as: 'withdraw'
+      
       
 resource :relationships, only: [:create, :destroy]
 get "followings" => "relationships#followings", as: "followings"

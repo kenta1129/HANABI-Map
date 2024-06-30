@@ -60,3 +60,19 @@ a.title-link {
 .dark-purple-link {
   color: #4b0082;
 }
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message {
+  margin-bottom: 20px;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
