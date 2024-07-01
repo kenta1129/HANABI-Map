@@ -3,3 +3,8 @@
 html, body {
   background: linear-gradient(-45deg,#17184b,#17184b) !important;
 }
+
+#map {
+  width: 100%;
+  height: calc(100vh - 88px - 179px);
+}
