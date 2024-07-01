@@ -22,6 +22,7 @@
           <tr>
             <th>プロフィール画像</th>
             <th>ユーザーネーム</th>
+            <th>投稿日時</th>
             <th>店名</th>
             <th>内容</th>
             <th></th>
@@ -36,6 +37,7 @@
             <tr>
               <td><%= image_tag post.user.get_profile_image, size: "50x50" %></td>
               <td><%= post.user.name %></td>
+              <td><%= post.created_at.strftime("%Y年%m月%d日") %></td>
               <td><%= post.title %></td>
               <td><%= post.body %></td>
               <td id="favorite_btn_<%= post.id %>">
