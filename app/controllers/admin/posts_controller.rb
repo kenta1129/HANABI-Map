@@ -3,7 +3,7 @@ before_action :authenticate_admin!
 
 
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
   end
 
   def show

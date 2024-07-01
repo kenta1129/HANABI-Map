@@ -93,3 +93,14 @@ a.title-link {
   height: auto;
   display: block;
 }
+
+.container, .container th, .container td, .container h1, .container a {
+    color: white;
+  }
+  .pagination {
+    color: white;
+  }
+  
+  body {
+  color: white;
+}

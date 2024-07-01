@@ -23,7 +23,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.page(params[:page])
+    @users = User.page(params[:page]).per(15)
   end
 
   def unsubscribe
