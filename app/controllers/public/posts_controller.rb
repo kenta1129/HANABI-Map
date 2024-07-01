@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
     @photo_url = "360_F_284557081_Tb4aC3mUFKZMcShrfIhz6ojaJckAvT9E.jpg"
   end
 
@@ -17,7 +17,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "投稿に成功しました"
     else
-      @posts = Post.page(params[:page])
+      @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
       flash[:alert] = "投稿に失敗しました"
       render :index
     end
@@ -56,7 +56,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title,:body)
+    params.require(:post).permit(:title,:body, :address)
   end
 
   def ensure_correct_user

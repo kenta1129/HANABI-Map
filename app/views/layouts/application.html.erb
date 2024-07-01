@@ -6,21 +6,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/b50421887c.js" crossorigin="anonymous"></script>
   </head>
-<body class="d-flex flex-column vh-100">
-  <main class="mb-auto">
-    <p id="notice"><%= flash[:notice] %></p>
+  <body class="d-flex flex-column vh-100">
+    <main class="mb-auto">
+      <p id="notice"><%= flash[:notice] %></p>
       <p id="alert"><%= flash[:alert] %></p>
-    <%= render 'layouts/header' %>
-    
-      
-      
-    <%= yield %>
+      <%= render 'layouts/header' %>
+
+      <li class="nav-item">
+        <%= link_to '投稿フォーム', new_post_path, class: 'nav-link text-dark', data: {turbolinks: "false"} %>
+      </li>
+
+      <%= yield %>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-jpostal-ja@2.14.45/jquery.jpostal.min.js"></script>
   </body>
 </html>
- <%= render 'layouts/footer' %>
+<%= render 'layouts/footer' %>

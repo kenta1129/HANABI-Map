@@ -11,6 +11,11 @@ class Post < ApplicationRecord
   validates :title, {presence: true}
   validates :body, {presence: true, length: {maximum:200}}
   
+  validates :address, presence: true
+
+  geocoded_by :address
+  after_validation :geocode
+  
   def self.search_for(content, method)
     if method == 'perfect'
       Post.where(body: content)

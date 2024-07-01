@@ -42,15 +42,26 @@
                 <%= render "public/favorites/btn", post: post %>
               </td>
               <td>閲覧数: <%= post.view_count %></td>
-              <td><%= link_to "投稿詳細", post_path(post.id), class: "btn btn-info btn-sm" %></td>
+              <td><%= link_to "詳細", post_path(post.id), class: "btn btn-info btn-sm" %></td>
               <% if post.user == current_user %>
-                <td><%= link_to "投稿編集", edit_post_path(post.id), class: "btn btn-warning btn-sm" %></td>
+                <td><%= link_to "編集", edit_post_path(post.id), class: "btn btn-warning btn-sm" %></td>
                 <td><%= link_to "削除", post_path(post), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-danger btn-sm" %></td>
               <% end %>
             </tr>
           <% end %>
         </tbody>
       </table>
+       <% @posts.each do |post| %>
+      <p class="card-title">
+  <%= link_to(post_path(post.id), class:"text-dark") do %>
+   <strong><i class="fa-solid fa-flag"></i><span> <%= post.title %></span></strong>
+  <% end %>
+</p>
+<p class="card-title">
+  <span><i class="fa-solid fa-location-dot"></i> <%= post.address %></span>
+</p>
+<p class="card-title">説明：<%= post.body %></p>
+<% end %>
       <%= paginate @posts, class: 'pagination' %>
     </div>
   </div>
