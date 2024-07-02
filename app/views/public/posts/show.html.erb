@@ -1,6 +1,6 @@
 <div class='container'>
   <div class='row'>
-    <h2>Post</h2>
+    <h2>投稿詳細</h2>
     <div class='col-md-8 offset-md-1'>
       <table class='table'>
         <tr>
@@ -12,7 +12,7 @@
           </td>
           <td><%= @post.title %></td>
           <td><%= @post.body %></td>
-          <td id="favorite_btn_<%= @post.id %>">
+          <td id="favorite-<%= @post.id %>">
             <%= render "public/favorites/btn", post: @post %>
           </td>
           <td class="post-comments-counter">

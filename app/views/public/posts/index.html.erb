@@ -28,7 +28,7 @@
               <td><%= post.created_at.strftime("%Y年%m月%d日") %></td>
               <td><%= post.title %></td>
               <td><%= post.body %></td>
-              <td id="favorite_btn_<%= post.id %>">
+              <td id="favorite-<%= post.id %>">
                 <%= render "public/favorites/btn", post: post %>
               </td>
               <td>閲覧数: <%= post.view_count %></td>
