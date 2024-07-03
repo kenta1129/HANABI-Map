@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     get "homes/about", to: "homes#about"
     get '/search', to: 'searches#search', as: 'search'
     resources :chats, only: [:show, :create, :destroy]
-    resource :map, only: [:show]
+    resource :map, only: [:show,:index]
 
     resources :posts, only: [:index, :show, :edit, :new, :create, :destroy, :update] do
       resources :post_comments, only: [:create, :destroy]

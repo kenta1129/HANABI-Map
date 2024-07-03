@@ -17,7 +17,7 @@ const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
   });
 
   try {
-    const response = await fetch("/post_images.json");
+    const response = await fetch("/posts.json");
     if (!response.ok) throw new Error('Network response was not ok');
 
     const { data: { items } } = await response.json();
@@ -26,17 +26,47 @@ const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
     items.forEach( item => {
       const latitude = item.latitude;
       const longitude = item.longitude;
-      const shopName = item.shop_name;
+      const title = item.title;
+      const userImage = item.user.image;
+      const userName = item.user.name;
+      const address = item.address;
+      const body = item.body;
 
       const marker = new google.maps.marker.AdvancedMarkerElement ({
         position: { lat: latitude, lng: longitude },
         map,
-        title: shopName,
+        title: title,
+        
+      });
        
+       const contentString = `
+        <div class="information container p-0">
+          <div class="mb-3 d-flex align-items-center">
+            <img class="rounded-circle mr-2" src="${userImage}" width="40" height="40">
+            <p class="lead m-0 font-weight-bold">${userName}</p>
+          </div>
+          <div>
+            <h5 class="h4 font-weight-bold">${title}</h5>
+            <p class="text-muted">${address}</p>
+            <p class="lead">${body}</p>
+          </div>
+        </div>
+      `;
+      
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        ariaLabel: title,
+      });
+      
+      marker.addListener("click", () => {
+          infowindow.open({
+          anchor: marker,
+          map,
+        })
       });
     });
   } catch (error) {
-    console.error('Error fetching or processing post images:', error);
+    console.error('Error fetching or processing posts:', error);
    }
   }
 

@@ -6,8 +6,8 @@ json.data do
         json.name post.user.name
         json.image url_for(post.user.profile_image)
       end
-      json.shop_name post.title
-      json.caption post.body
+      json.title post.title
+      json.body post.body
       json.address post.address
       json.latitude post.latitude
       json.longitude post.longitude

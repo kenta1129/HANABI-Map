@@ -95,7 +95,7 @@ a.title-link {
 }
 
 .container, .container th, .container td, .container h1, .container a {
-    color: white;
+    color: grey;
   }
   .pagination {
     color: white;
