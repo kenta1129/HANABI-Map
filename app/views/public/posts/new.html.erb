@@ -11,38 +11,106 @@
   </div>
 <% end %>
 
-<div class="center">
-  <%= form_with model: @post do |f| %>
-    <div>
-      <h7>店名</h7>
-      <%= f.text_area :title %>
-    </div>
-    <br>
-    <div>
-      <h7>内容</h7>
-      <%= f.text_area :body %>
-    </div>
-    <br>
-    <div class="input-group mb-3 mt-4">
-      <div class="input-group-prepend">
-        <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-tenge-sign"></i></span>
-      </div>
-      <%= text_field_tag :zipcode, nil, class: "form-control", placeholder: "郵便番号" %>
-    </div>
-    <div class="input-group mb-3 mt-4">
-      <div class="input-group-prepend">
-        <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
-      </div>
-      <%= f.text_field :address, class: "form-control", placeholder: "住所" %>
-    </div>
-    <div class="button-container">
-    <%= f.submit 'Create Post', class: "btn btn-success" %>
-  <% end %>
-</div>
-<%= javascript_pack_tag "jpostal",  'data-turbolinks-track': 'reload' %>
+<%= form_with(model: @post, local: true) do |f| %>
+  <div class="actions">
+    <%= f.label :title, "店名" %>
+    <%= f.text_field :title %>
+    <%= f.label :body, "内容" %>
+    <%= f.text_field :body %>
+    <%= f.label :latitude, "緯度" %>
+    <%= f.text_field :latitude, value: "緯度", id: :latitude %>
+    <%= f.label :longitude, "経度" %>
+    <%= f.text_field :longitude, value: "経度", id: :longitude %>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h2>Map</h2>
+
+<input id="address" type="textbox" value="GeekSalon">
+<input type="button" value="検索" onclick="codeAddress()">
+<p>マーカーをドラッグ＆ドロップで位置の調整ができます。<p>
+<div id="map"></div>
 
 <style>
-  body {
+  #map {
+    height: 600px;
+    width: 600px;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .actions label,
+  .actions input {
+    margin-bottom: 10px;
+  }
+
+  .actions input[type="submit"] {
+    margin-top: 20px;
+  }
+
+  h1, h2, .center, .actions label, .actions input[type="submit"] {
     color: white;
   }
 </style>
+
+<script>
+  let map;
+  let marker;
+  let geocoder;
+  let markerExists = false;
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder();
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: 35.6803997, lng: 139.7690174 },
+      zoom: 15,
+    });
+
+    map.addListener('click', function(event) {
+      placeMarker(event.latLng);
+    });
+  }
+
+  function placeMarker(location) {
+    if (markerExists) {
+      marker.setPosition(location);
+    } else {
+      marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        draggable: true
+      });
+      markerExists = true;
+    }
+
+    document.getElementById('latitude').value = location.lat();
+    document.getElementById('longitude').value = location.lng();
+
+    google.maps.event.addListener(marker, 'dragend', function(event) {
+      document.getElementById('latitude').value = event.latLng.lat();
+      document.getElementById('longitude').value = event.latLng.lng();
+    });
+  }
+
+  function codeAddress() {
+    const inputAddress = document.getElementById('address').value;
+    geocoder.geocode({ 'address': inputAddress }, function(results, status) {
+      if (status === 'OK') {
+        map.setCenter(results[0].geometry.location);
+        placeMarker(results[0].geometry.location);
+      } else {
+        alert('該当する結果がありませんでした：' + status);
+      }
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0EjeqOUeUawYf8NAIMbhYUDQMQKlU2Ck&callback=initMap" async defer></script>

@@ -95,9 +95,21 @@ a.title-link {
 }
 
 .container, .container th, .container td, .container h1, .container a {
-    color: grey;
+    color: white;
   }
   .pagination {
     color: white;
   }
   
+  h1, h2, .center, .actions label, .actions input[type="submit"] {
+  color: white;
+}
+
+.header {
+  margin-bottom: 0px;
+}
+
+.main-visual {
+  margin-top: 0;
+  padding-top: 0;
+}

@@ -1,21 +1,22 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  
+
   def index
     respond_to do |format|
-    format.html do
-    @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
-    end
-    format.json do
+      format.html do
+        @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
+      end
+      format.json do
         @posts = Post.all
       end
-    @photo_url = "360_F_284557081_Tb4aC3mUFKZMcShrfIhz6ojaJckAvT9E.jpg"
-   end
+      @photo_url = "2024-07-05 3.58.39.png"
+    end
   end
 
   def new
     @post = Post.new
+     @photo_url = "2024-07-05 3.58.39.png"
   end
 
   def create
@@ -39,11 +40,13 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+     @photo_url = "2024-07-05 3.58.39.png"
   end
 
   def update
     @post = Post.find(params[:id])
     @post.user_id = current_user.id
+     @photo_url = "2024-07-05 3.58.39.png"
     if @post.update(post_params)
       flash[:notice] = "更新に成功しました"
       redirect_to post_path(@post.id)
@@ -54,16 +57,17 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
+     @photo_url = "2024-07-05 3.58.39.png"
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "削除に成功しました"
     redirect_to posts_path
   end
-  
+
   private
 
   def post_params
-    params.require(:post).permit(:title,:body, :address)
+    params.require(:post).permit(:title, :body, :address, :latitude, :longitude)
   end
 
   def ensure_correct_user

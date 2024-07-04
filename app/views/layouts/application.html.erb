@@ -16,11 +16,8 @@
       <p id="notice"><%= flash[:notice] %></p>
       <p id="alert"><%= flash[:alert] %></p>
       <%= render 'layouts/header' %>
-
-      <li class="nav-item">
-        <%= link_to '投稿フォーム', new_post_path, class: 'nav-link text-dark', data: {turbolinks: "false"} %>
-      </li>
-
+　　　<div class="main-visual">
+  <%= image_tag @photo_url, alt: "Main Visual" %>
       <%= yield %>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/jquery-jpostal-ja@2.14.45/jquery.jpostal.min.js"></script>
