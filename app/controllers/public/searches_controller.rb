@@ -3,6 +3,7 @@ class Public::SearchesController < ApplicationController
   before_action :authenticate_user!
   
   def search
+    @photo_url = "search.png"
     @model = params[:model]
     @content = params[:content]
     @method = params[:method]

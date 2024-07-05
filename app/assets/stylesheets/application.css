@@ -106,10 +106,10 @@ a.title-link {
 }
 
 .header {
-  margin-bottom: 0px;
+  margin-bottom: 0px!important;
 }
 
 .main-visual {
-  margin-top: 0;
-  padding-top: 0;
+  margin-top: 0px!important;
+  padding-top: 0px!important;
 }

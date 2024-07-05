@@ -4,6 +4,7 @@ before_action :authenticate_admin!
 
   def index
     @posts = Post.page(params[:page])
+    @photo_url = "posts.png"
   end
 
   def show
@@ -11,10 +12,11 @@ before_action :authenticate_admin!
     @posts = Post.page(params[:page])
     @user = @post.user
     @post_comments = PostComment.all
+    @photo_url = "post.png"
   end
 
   def update
-    
+    @photo_url = "post_edit.png"
     @post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to admin_posts_path, notice: 'ユーザー情報を更新しました。'

@@ -4,15 +4,18 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.page(params[:page])
+    @photo_url = "users.png"
   end
 
   def show
+    @photo_url = "user.png"
   end
 
   def edit
   end
 
   def update
+    @photo_url = "user_edit.png"
     if @user.update(user_params)
       flash[:success] = "情報を更新しました。"
       redirect_to admin_user_path(@user)

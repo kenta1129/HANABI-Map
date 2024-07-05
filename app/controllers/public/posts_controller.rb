@@ -10,13 +10,13 @@ class Public::PostsController < ApplicationController
       format.json do
         @posts = Post.all
       end
-      @photo_url = "2024-07-05 3.58.39.png"
+      @photo_url = "posts.png"
     end
   end
 
   def new
     @post = Post.new
-     @photo_url = "2024-07-05 3.58.39.png"
+     @photo_url = "new.png"
   end
 
   def create
@@ -35,18 +35,18 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post.increment!(:view_count)
-    @photo_url = "360_F_284557081_Tb4aC3mUFKZMcShrfIhz6ojaJckAvT9E.jpg"
+    @photo_url = "post.png"
   end
 
   def edit
     @post = Post.find(params[:id])
-     @photo_url = "2024-07-05 3.58.39.png"
+     @photo_url = "post_edit.png"
   end
 
   def update
     @post = Post.find(params[:id])
     @post.user_id = current_user.id
-     @photo_url = "2024-07-05 3.58.39.png"
+     @photo_url = "postedit.png"
     if @post.update(post_params)
       flash[:notice] = "更新に成功しました"
       redirect_to post_path(@post.id)
