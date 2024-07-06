@@ -67,7 +67,7 @@
   let markerExists = false;
 
   function initMap() {
-    geocoder = new google.maps.Geocoder();
+    
     map = new google.maps.Map(document.getElementById('map'), {
       center: { lat: 35.6803997, lng: 139.7690174 },
       zoom: 15,
@@ -100,6 +100,7 @@
   }
 
   function codeAddress() {
+    geocoder = new google.maps.Geocoder();
     const inputAddress = document.getElementById('address').value;
     geocoder.geocode({ 'address': inputAddress }, function(results, status) {
       if (status === 'OK') {
