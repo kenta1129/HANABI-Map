@@ -6,7 +6,7 @@ class Admin::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
-    @photo_url = "admin_log.png"
+    @photo_url = "admin-log.png"
     super
   end
 

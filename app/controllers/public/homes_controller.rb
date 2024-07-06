@@ -1,7 +1,7 @@
 class Public::HomesController < ApplicationController
 
 def top
-   @photo_url = "top3.png"
+   @photo_url = "top11.png"
 end
 
 def about

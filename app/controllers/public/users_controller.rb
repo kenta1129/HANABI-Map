@@ -4,16 +4,16 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).per(20)
-     @photo_url = "user.png"
+     @photo_url = "user1.png"
   end
 
   def edit
     @user = User.find(params[:id])
-     @photo_url = "user_edit.png"
+     @photo_url = "user_edit1.png"
   end
 
   def update
-     @photo_url = "user_edit.png"
+     @photo_url = "user_edit1.png"
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "更新に成功しました"
@@ -26,10 +26,11 @@ class Public::UsersController < ApplicationController
 
   def index
     @users = User.page(params[:page])
-     @photo_url = "users.png"
+     @photo_url = "users1.png"
   end
 
   def unsubscribe
+    @photo_url = "tai.png"
   end
 
   def withdraw

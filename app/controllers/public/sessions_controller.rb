@@ -6,7 +6,7 @@ class Public::SessionsController < Devise::SessionsController
   #before_action :user_state, only: [:create]
   
  def new
-   @photo_url = "ses2.png"
+   @photo_url = "ses.png"
     super
  end
 
