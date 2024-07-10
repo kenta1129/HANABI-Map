@@ -19,11 +19,6 @@ html, body {
   height: 0px;
 }
 
-.main-visual {
-  margin-top: 0px!important;
-  padding-top: 0px!important;
-}
-
 .center-form {
   color: white;
 }
@@ -33,4 +28,82 @@ html, body {
 .center-form .actions input,
 .center-form p {
   color: white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.center-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.center form {
+  display: inline-block;
+  text-align: left;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+a.username-link {
+    color: #6A0DAD;
+}
+
+a.title-link {
+    color: #6A0DAD; 
+}
+
+.h4 {
+  color: #6a0dad; 
+}
+
+.post-user-name {
+  color: #6a0dad; 
+}
+
+.dark-purple-link {
+  color: #4b0082;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message {
+  margin-bottom: 20px;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.small-text {
+  font-size: 14px; 
+}
+
+.main-visual {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.header {
+  margin-bottom: 0px!important;
 }
