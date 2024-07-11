@@ -42,7 +42,7 @@ const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
        const contentString = `
         <div class="information container p-0">
           <div class="mb-3 d-flex align-items-center">
-            <img class="rounded-circle mr-2" src="${userImage}" width="20" height="20">
+            <img class="rounded-circle mr-2" src="${userImage}" width="50" height="50">
             <p class="lead m-0 font-weight-bold">${userName}</p>
           </div>
           <div>
