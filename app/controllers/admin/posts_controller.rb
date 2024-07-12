@@ -3,12 +3,8 @@ before_action :authenticate_admin!
 
 
   def index
-<<<<<<< HEAD
-    @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
-=======
     @posts = Post.page(params[:page])
     @photo_url = "posts.png"
->>>>>>> d052277aecb7edfa278b77ede3693369c521e190
   end
 
   def show

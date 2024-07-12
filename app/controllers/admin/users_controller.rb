@@ -3,12 +3,8 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-<<<<<<< HEAD
-    @users = User.page(params[:page]).per(15)
-=======
     @users = User.page(params[:page])
     @photo_url = "users1.png"
->>>>>>> d052277aecb7edfa278b77ede3693369c521e190
   end
 
   def show
