@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :destroy]
-    resources :post_comments, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy, :index]
   end
 
   devise_scope :admin do
