@@ -3,15 +3,17 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page])
-    
+    @posts = @user.posts.page(params[:page]).per(20)
+     @photo_url = "user1.png"
   end
 
   def edit
     @user = User.find(params[:id])
+     @photo_url = "user_edit1.png"
   end
 
   def update
+     @photo_url = "user_edit1.png"
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "更新に成功しました"
@@ -23,13 +25,20 @@ class Public::UsersController < ApplicationController
   end
 
   def index
+<<<<<<< HEAD
     @users = User.page(params[:page]).per(15)
+=======
+    @users = User.page(params[:page])
+     @photo_url = "users1.png"
+>>>>>>> d052277aecb7edfa278b77ede3693369c521e190
   end
 
   def unsubscribe
+    @photo_url = "tai.png"
   end
 
   def withdraw
+    @photo_url = "tai.png"
     @user = User.find(current_user.id)
     @user.update(is_active: false)
     reset_session
@@ -38,6 +47,7 @@ class Public::UsersController < ApplicationController
   end
   
   def favorites 
+     @photo_url = "fav.png"
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)

@@ -1,5 +1,3 @@
-<h1 class="center">新規投稿</h1>
-
 <% if @post.errors.any? %>
   <div class="center">
     <%= @post.errors.count %> error prohibited this post from being saved:
@@ -11,6 +9,7 @@
   </div>
 <% end %>
 
+<<<<<<< HEAD
 <div class="center">
   <%= form_with model: @post do |f| %>
     <div>
@@ -34,3 +33,109 @@
     color: white;
   }
 </style>
+=======
+<%= form_with(model: @post, local: true) do |f| %>
+  <div class="actions">
+    <%= f.label :title, "店名" %>
+    <%= f.text_field :title %>
+    <%= f.label :body, "内容" %>
+    <%= f.text_field :body %>
+    <%= f.label :latitude, "緯度" %>
+    <%= f.text_field :latitude, value: "緯度", id: :latitude %>
+    <%= f.label :longitude, "経度" %>
+    <%= f.text_field :longitude, value: "経度", id: :longitude %>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h2>Map</h2>
+
+<input id="address" type="textbox" value="GeekSalon">
+<input type="button" value="検索" onclick="codeAddress()">
+<p>マーカーをドラッグ＆ドロップで位置の調整ができます。<p>
+<div id="map"></div>
+
+<style>
+  #map {
+    height: 600px;
+    width: 600px;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .actions label,
+  .actions input {
+    margin-bottom: 10px;
+  }
+
+  .actions input[type="submit"] {
+    margin-top: 20px;
+  }
+
+  h1, h2, .center, .actions label, .actions input[type="submit"] {
+    color: white;
+  }
+</style>
+
+<script>
+  let map;
+  let marker;
+  let geocoder;
+  let markerExists = false;
+
+  function initMap() {
+    
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: { lat: 35.6803997, lng: 139.7690174 },
+      zoom: 15,
+    });
+
+    map.addListener('click', function(event) {
+      placeMarker(event.latLng);
+    });
+  }
+
+  function placeMarker(location) {
+    if (markerExists) {
+      marker.setPosition(location);
+    } else {
+      marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        draggable: true
+      });
+      markerExists = true;
+    }
+
+    document.getElementById('latitude').value = location.lat();
+    document.getElementById('longitude').value = location.lng();
+
+    google.maps.event.addListener(marker, 'dragend', function(event) {
+      document.getElementById('latitude').value = event.latLng.lat();
+      document.getElementById('longitude').value = event.latLng.lng();
+    });
+  }
+
+  function codeAddress() {
+    geocoder = new google.maps.Geocoder();
+    const inputAddress = document.getElementById('address').value;
+    geocoder.geocode({ 'address': inputAddress }, function(results, status) {
+      if (status === 'OK') {
+        map.setCenter(results[0].geometry.location);
+        placeMarker(results[0].geometry.location);
+      } else {
+        alert('該当する結果がありませんでした：' + status);
+      }
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0EjeqOUeUawYf8NAIMbhYUDQMQKlU2Ck&callback=initMap" async defer></script>
+>>>>>>> d052277aecb7edfa278b77ede3693369c521e190

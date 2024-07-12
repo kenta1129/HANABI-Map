@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="main-visual">
   <%= image_tag @photo_url, alt: "Main Visual" %>
 </div>
@@ -44,4 +45,10 @@
       <%= paginate @posts, class: 'pagination' %>
     </div>
   </div>
+=======
+<div class="container">
+  <div id="map"></div>
+>>>>>>> d052277aecb7edfa278b77ede3693369c521e190
 </div>
+
+<%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>

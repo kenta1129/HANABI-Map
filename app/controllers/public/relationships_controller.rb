@@ -14,11 +14,13 @@ class Public::RelationshipsController < ApplicationController
   end
   
   def followings
+     @photo_url = "follow.png"
     user = User.find(params[:user_id])
     @users = user.followings
   end
   
   def followers
+    @photo_url = "follower.png"
     user = User.find(params[:user_id])
     @users = user.followers
   end

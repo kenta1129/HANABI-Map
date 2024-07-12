@@ -1,10 +1,10 @@
-<div class='container'>
+<div class='container text-white'>
   <div class='row text-center'>
     <div class="col">
       <h2><%= @user.name %>さんの投稿一覧</h2>
 
-      <div class="row">
-        <div class="col">
+      <div class="row text-white">
+        <div class="col text-white">
           <h3>フォロー中:</h3>
           <%= link_to @user.followings.count, user_followings_path(@user), class: "h3" %>
         </div>
@@ -17,7 +17,11 @@
       <% if @user == current_user %>
         <div class="row">
           <div class="col">
+<<<<<<< HEAD
             <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block  edit_user_#{@user.id}" %>
+=======
+            <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" %>
+>>>>>>> d052277aecb7edfa278b77ede3693369c521e190
           </div>
         </div>
       <% end %>
@@ -26,7 +30,7 @@
 
   <div class="row">
     <div class="col-md-10 offset-md-1">
-      <table class='table'>
+      <table class='table text-white'>
         <thead>
           <tr>
             <th>店名</th>

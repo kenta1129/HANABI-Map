@@ -1,5 +1,111 @@
 @use '~bootstrap/scss/bootstrap';
 
 html, body {
+<<<<<<< HEAD
   background: linear-gradient(-45deg, #17184b, #17184b) !important;
 }
+=======
+  background: linear-gradient(-45deg,#17184b,#17184b) !important;
+}
+
+.home-index {
+  background: black !important;
+}
+
+
+#map {
+  width: 100%;
+  height: calc(100vh - 88px - 179px);
+}
+
+.header {
+  margin-bottom: 0px!important;
+  height: 0px;
+  margin-bottom: 0px!important;
+}
+
+.center-form {
+  color: white;
+}
+
+.center-form .field label,
+.center-form .field input,
+.center-form .actions input,
+.center-form p {
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.center-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.center form {
+  display: inline-block;
+  text-align: left;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+a.username-link {
+    color: #6A0DAD;
+}
+
+a.title-link {
+    color: #6A0DAD; 
+}
+
+.h4 {
+  color: #6a0dad; 
+}
+
+.post-user-name {
+  color: #6a0dad; 
+}
+
+.dark-purple-link {
+  color: #4b0082;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message {
+  margin-bottom: 20px;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.small-text {
+  font-size: 14px; 
+}
+
+.main-visual {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+>>>>>>> d052277aecb7edfa278b77ede3693369c521e190

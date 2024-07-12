@@ -14,6 +14,7 @@
  *= require_self
  */
  
+<<<<<<< HEAD
 .pagination {
   display: flex;
   justify-content: center;
@@ -111,3 +112,5 @@ a.title-link {
 .center-form {
   color: white;
 }
+=======
+>>>>>>> d052277aecb7edfa278b77ede3693369c521e190

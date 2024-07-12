@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 <div class='container'>
   <div class='row'>
     <h2>投稿詳細</h2>
     <div class='col-md-8 offset-md-1'>
       <table class='table'>
+=======
+<div class='container　text-white'>
+  <div class='row text-white'>
+    <div class='col-md-8 offset-md-1 text-white'>
+      <table class='table　text-white'>
+>>>>>>> d052277aecb7edfa278b77ede3693369c521e190
         <tr>
           <td>
             <%= link_to(@post.user) do %>
@@ -10,6 +17,7 @@
               <span class="post-user-name"><%= @post.user.name %></span>
             <% end %>
           </td>
+          <td><%= @post.created_at.strftime("%Y年%m月%d日") %></td>
           <td><%= @post.title %></td>
           <td><%= @post.body %></td>
           <td id="favorite-<%= @post.id %>">
@@ -21,14 +29,23 @@
           <td>閲覧数: <%= @post.view_count %></td>
           <% if @post.user == current_user %>
             <td>
-              <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-warning edit_post_#{@post.id}" %> 
+              <%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-warning edit_post_#{@post.id}" %> 
             </td>
             <td>
-              <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %>
+              <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %>
             </td>
           <% end %>
         </tr>
       </table>
+      <p class="card-title">
+  <%= link_to(post_path(@post.id), class:"text-white") do %>
+   <strong><i class="fa-solid fa-flag"></i><span> <%= @post.title %></span></strong>
+  <% end %>
+</p>
+<p class="card-title">
+  <span><i class="fa-solid fa-location-dot"></i> <%= @post.address %></span>
+</p>
+<p class="card-title">説明：<%= @post.body %></p>
       <div class="post-comments-index">
         <%= render "public/post_comments/index", post: @post %>
       </div>
