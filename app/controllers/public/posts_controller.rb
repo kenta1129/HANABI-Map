@@ -3,10 +3,6 @@ class Public::PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-<<<<<<< HEAD
-    @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
-    @photo_url = "360_F_284557081_Tb4aC3mUFKZMcShrfIhz6ojaJckAvT9E.jpg"
-=======
     respond_to do |format|
       format.html do
         @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
@@ -16,7 +12,6 @@ class Public::PostsController < ApplicationController
       end
       @photo_url = "posts.png"
     end
->>>>>>> d052277aecb7edfa278b77ede3693369c521e190
   end
 
   def new

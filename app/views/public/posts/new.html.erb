@@ -9,31 +9,6 @@
   </div>
 <% end %>
 
-<<<<<<< HEAD
-<div class="center">
-  <%= form_with model: @post do |f| %>
-    <div>
-      <h7>店名</h7>
-      <%= f.text_area :title %>
-    </div>
-    <br>
-    <div>
-      <h7>内容</h7>
-      <%= f.text_area :body %>
-    </div>
-    <br>
-    <div class="button-container">
-      <%= f.submit 'Create Post', class: "btn btn-success" %>
-    <% end %>
-  </div>
-</div>
-
-<style>
-  body {
-    color: white;
-  }
-</style>
-=======
 <%= form_with(model: @post, local: true) do |f| %>
   <div class="actions">
     <%= f.label :title, "店名" %>
@@ -138,4 +113,3 @@
   }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0EjeqOUeUawYf8NAIMbhYUDQMQKlU2Ck&callback=initMap" async defer></script>
->>>>>>> d052277aecb7edfa278b77ede3693369c521e190

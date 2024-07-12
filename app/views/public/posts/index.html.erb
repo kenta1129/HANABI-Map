@@ -1,54 +1,5 @@
-<<<<<<< HEAD
-<div class="main-visual">
-  <%= image_tag @photo_url, alt: "Main Visual" %>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-15 offset-md-1">
-      <h1>投稿一覧</h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>プロフィール画像</th>
-            <th>ユーザーネーム</th>
-            <th>投稿日時</th>
-            <th>店名</th>
-            <th>内容</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |post| %>
-            <tr>
-              <td><%= image_tag post.user.get_profile_image, size: "50x50" %></td>
-              <td><%= post.user.name %></td>
-              <td><%= post.created_at.strftime("%Y年%m月%d日") %></td>
-              <td><%= post.title %></td>
-              <td><%= post.body %></td>
-              <td id="favorite-<%= post.id %>">
-                <%= render "public/favorites/btn", post: post %>
-              </td>
-              <td>閲覧数: <%= post.view_count %></td>
-              <td><%= link_to "詳細", post_path(post.id), class: "btn btn-info btn-sm" %></td>
-              <% if post.user == current_user %>
-                <td><%= link_to "編集", edit_post_path(post.id), class: "btn btn-warning btn-sm" %></td>
-                <td><%= link_to "削除", post_path(post), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-danger btn-sm" %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%= paginate @posts, class: 'pagination' %>
-    </div>
-  </div>
-=======
 <div class="container">
   <div id="map"></div>
->>>>>>> d052277aecb7edfa278b77ede3693369c521e190
 </div>
 
 <%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
