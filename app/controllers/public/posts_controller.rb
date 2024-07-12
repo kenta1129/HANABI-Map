@@ -41,7 +41,7 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-     @photo_url = "post_edit.png"
+    @photo_url = "post_edit.png"
   end
 
   def update

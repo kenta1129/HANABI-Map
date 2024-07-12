@@ -2,13 +2,12 @@
   key: process.env.Maps_API_Key
 });
 
-
 let map;
 
 async function initMap() {
-const { Map } = await google.maps.importLibrary("maps");
-const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
- 
+  const { Map } = await google.maps.importLibrary("maps");
+  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
+
   map = new Map(document.getElementById("map"), {
     center: { lat: 35.681236, lng: 139.767125 }, 
     zoom: 15,
@@ -31,15 +30,15 @@ const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
       const userName = item.user.name;
       const address = item.address;
       const body = item.body;
+      const postId = item.id; // Assuming post ID is available in the response
 
-      const marker = new google.maps.marker.AdvancedMarkerElement ({
+      const marker = new google.maps.marker.AdvancedMarkerElement({
         position: { lat: latitude, lng: longitude },
         map,
         title: title,
-        
       });
-       
-       const contentString = `
+
+      const contentString = `
         <div class="information container p-0">
           <div class="mb-3 d-flex align-items-center">
             <img class="rounded-circle mr-2" src="${userImage}" width="50" height="50">
@@ -49,25 +48,26 @@ const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
             <h5 class="h4 font-weight-bold">${title}</h5>
             <p class="text-muted">${address}</p>
             <p class="lead">${body}</p>
+            <a href="/posts/${postId}">投稿詳細</a>
           </div>
         </div>
       `;
-      
+
       const infowindow = new google.maps.InfoWindow({
         content: contentString,
         ariaLabel: title,
       });
-      
+
       marker.addListener("click", () => {
-          infowindow.open({
+        infowindow.open({
           anchor: marker,
           map,
-        })
+        });
       });
     });
   } catch (error) {
     console.error('Error fetching or processing posts:', error);
-   }
   }
+}
 
-initMap()
+initMap();
