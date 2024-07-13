@@ -1,33 +1,28 @@
-<<<<<<< HEAD
-<div style="text-align: center; color: white;">
-  <h2>会員登録</h2>
-=======
 <div style="text-align: center;">
->>>>>>> d052277aecb7edfa278b77ede3693369c521e190
 
   <%= form_with model: @user, url: user_registration_path do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
 
     <div class="field">
-      <%= f.label :name %><br>
+      <%= f.label :name , class: "text-white"%><br>
       <%= f.text_field :name %>
     </div>
 
     <div class="field">
-      <%= f.label :email %><br />
+      <%= f.label :email, class: "text-white" %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
     <div class="field">
-      <%= f.label :password %>
+      <%= f.label :password , class: "text-white"%>
       <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em　class="text-white">(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
+      <%= f.label :password_confirmation, class: "text-white" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
@@ -36,5 +31,5 @@
     </div>
   <% end %>
 
-  <p>すでに会員の方は</p><%= render "public/shared/links" %>
+  <p class="text-white">すでに会員の方は</p><%= render "public/shared/links" %>
 </div>

@@ -19,21 +19,33 @@
     <%= f.text_field :latitude, value: "緯度", id: :latitude %>
     <%= f.label :longitude, "経度" %>
     <%= f.text_field :longitude, value: "経度", id: :longitude %>
-    <%= f.submit %>
+    <%= f.submit '投稿', class: "btn btn-success"%>
   </div>
 <% end %>
 
-<h2>Map</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center">地図</h2>
+      <div class="input-group mb-3">
+        <input id="address" type="textbox" class="form-control">
+        <div class="input-group-append">
+          <input type="button" class="btn btn-primary" value="検索" onclick="codeAddress()">
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+  <p class="text-white text-center">マーカーをドラッグ＆ドロップで位置の調整ができます。</p>
 
-<input id="address" type="textbox" value="GeekSalon">
-<input type="button" value="検索" onclick="codeAddress()">
-<p>マーカーをドラッグ＆ドロップで位置の調整ができます。<p>
 <div id="map"></div>
+</div>
+</div>
 
 <style>
   #map {
     height: 600px;
-    width: 600px;
+    width: 100%;
   }
 
   .center {

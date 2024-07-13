@@ -46,7 +46,6 @@ async function initMap() {
           </div>
           <div>
             <h5 class="h4 font-weight-bold">${title}</h5>
-            <p class="text-muted">${address}</p>
             <p class="lead">${body}</p>
             <a href="/posts/${postId}">投稿詳細</a>
           </div>

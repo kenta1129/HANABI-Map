@@ -3,6 +3,7 @@ class Admin::PostCommentsController < ApplicationController
 def index
     @post_comments = PostComment.all
     @users = User.all
+    @photo_url = "admin_com.png"
 end
 
 def destroy

@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <h3><p><span class="p-0.5 bg-secondary"><%= @user.name %>さんの会員情報編集</span></p></h3>
-      <table class="table table-borderless">
+    <div class="col text-white">
+      <h3><%= @user.name %>さんの会員情報編集</h3>
+      <table class="table table-borderless text-white">
         <%= form_with model: [:admin, @user] do |f| %>
         <tr>
           <td>会員ID</td>
