@@ -1,5 +1,5 @@
 
-<div class="chat-container">
+<div class="chat-container text-white">
   <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h2>
   <div class="message" style="width: 400px;">
     <% @chats.each do |chat| %>
@@ -9,7 +9,7 @@
         <div class="left-container d-flex">
           <%= image_tag @user.get_profile_image, size: '30x30', style: 'border-radius: 50%' %>
           <p class="ml-1" style="text-align: left;">
-            <span style="background-color: #F5F5DC; padding: 5px; border-radius: 10px;"><%= chat.message %></span>
+            <span style="background-color: #60dbc5; padding: 5px; border-radius: 10px;"><%= chat.message %></span>
           </p>
         </div>
       <% end %>
