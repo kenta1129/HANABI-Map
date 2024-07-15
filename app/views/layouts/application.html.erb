@@ -12,8 +12,7 @@
   </head>
   <body class="d-flex flex-column vh-100">
     <main class="mb-auto">
-      <p id="notice"><%= flash[:notice] %></p>
-      <p id="alert"><%= flash[:alert] %></p>
+      <%= render "layouts/flash_messages" %>
       <%= render 'layouts/header' %>
 　　　<div class="main-visual">
         <%= image_tag @photo_url, alt: "Main Visual", class: "w-100 h-auto d-block" %>

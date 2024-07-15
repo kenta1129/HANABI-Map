@@ -1,0 +1,10 @@
+<% if @post.errors.any? %>
+  <div class="center alert alert-warning">
+    <%= @post.errors.count %> error prohibited this post from being saved:
+    <ul class="alert alert-danger">
+      <% @post.errors.full_messages.each do |message| %>
+        <li style="list-style:none;"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

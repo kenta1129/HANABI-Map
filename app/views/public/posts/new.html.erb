@@ -1,13 +1,5 @@
-<% if @post.errors.any? %>
-  <div class="center">
-    <%= @post.errors.count %> error prohibited this post from being saved:
-    <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
+<%= render 'layouts/error_messages', model: @post %>
 
 <%= form_with(model: @post, local: true) do |f| %>
   <div class="actions">

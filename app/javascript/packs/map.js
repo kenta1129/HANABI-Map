@@ -32,37 +32,39 @@ async function initMap() {
       const body = item.body;
       const postId = item.id; // Assuming post ID is available in the response
 
-      const marker = new google.maps.marker.AdvancedMarkerElement({
-        position: { lat: latitude, lng: longitude },
-        map,
-        title: title,
-      });
-
-      const contentString = `
-        <div class="information container p-0">
-          <div class="mb-3 d-flex align-items-center">
-            <img class="rounded-circle mr-2" src="${userImage}" width="50" height="50">
-            <p class="lead m-0 font-weight-bold">${userName}</p>
-          </div>
-          <div>
-            <h5 class="h4 font-weight-bold">${title}</h5>
-            <p class="lead">${body}</p>
-            <a href="/posts/${postId}">投稿詳細</a>
-          </div>
-        </div>
-      `;
-
-      const infowindow = new google.maps.InfoWindow({
-        content: contentString,
-        ariaLabel: title,
-      });
-
-      marker.addListener("click", () => {
-        infowindow.open({
-          anchor: marker,
+      if (latitude && longitude) {
+        const marker = new google.maps.marker.AdvancedMarkerElement({
+          position: { lat: latitude, lng: longitude },
           map,
+          title: title,
         });
-      });
+      
+        const contentString = `
+          <div class="information container p-0">
+            <div class="mb-3 d-flex align-items-center">
+              <img class="rounded-circle mr-2" src="${userImage}" width="50" height="50">
+              <p class="lead m-0 font-weight-bold">${userName}</p>
+            </div>
+            <div>
+              <h5 class="h4 font-weight-bold">${title}</h5>
+              <p class="lead">${body}</p>
+              <a href="/posts/${postId}">投稿詳細</a>
+            </div>
+          </div>
+        `;
+  
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          ariaLabel: title,
+        });
+  
+        marker.addListener("click", () => {
+          infowindow.open({
+            anchor: marker,
+            map,
+          });
+        });
+      }
     });
   } catch (error) {
     console.error('Error fetching or processing posts:', error);

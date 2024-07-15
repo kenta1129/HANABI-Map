@@ -8,8 +8,10 @@ class Post < ApplicationRecord
   
   has_one_attached :profile_image
   
-  validates :title, {presence: true}
+  validates :title, presence: true
   validates :body, {presence: true, length: {maximum:200}}
+  validates :latitude, presence: true
+  validates :longitude, presence: true
   
   # validates :address, presence: true
 

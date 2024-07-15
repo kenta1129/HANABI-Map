@@ -26,7 +26,7 @@ class Public::UsersController < ApplicationController
 
   def index
     @users = User.page(params[:page])
-     @photo_url = "users1.png"
+    @photo_url = "users1.png"
   end
 
   def unsubscribe
@@ -40,6 +40,12 @@ class Public::UsersController < ApplicationController
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path, notice: "退会処理を実行いたしました"
   end
   
   def favorites 

@@ -26,9 +26,9 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "投稿に成功しました"
     else
-      @posts = Post.page(params[:page]).per(20).order(created_at: :desc)
+      #@posts = Post.page(params[:page]).per(20).order(created_at: :desc)
       flash[:alert] = "投稿に失敗しました"
-      render :index
+      render :new
     end
   end
 
