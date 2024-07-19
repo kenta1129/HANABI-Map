@@ -39,9 +39,9 @@
 - IDE：Cloud9
 
 ## 動作画像
-- ![トップページ](/images/top-page.png)
-- ![新規投稿画面](/images/new-page.png)
-- ![投稿一覧画面](/images/post-index-page.png)
+<img width="1438" alt="top-page" src="https://github.com/user-attachments/assets/d927a883-db77-4326-acbf-ffc29da622fc">
+<img width="1439" alt="new-page" src="https://github.com/user-attachments/assets/f3951181-79b0-46c1-ab5a-58512647cf41">
+<img width="1440" alt="post-index-page" src="https://github.com/user-attachments/assets/051cd6a2-6461-43d2-97fd-438e7ee8c654">
 
 ## 使用素材
 - Google Maps API
