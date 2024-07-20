@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
     end
 
-   
+    resources :notifications, only: [:update]
     
     resources :users do
       get 'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'

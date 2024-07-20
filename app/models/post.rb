@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   
   has_many :favorites, dependent: :destroy
   
+  has_many :notifications, as: :notifiable, dependent: :destroy
+  
   has_one_attached :profile_image
   
   validates :title, presence: true
@@ -34,6 +36,11 @@ class Post < ApplicationRecord
      favorites.exists?(user_id: user.id)
   end
   
+  after_create do
+    user.followers.each do |follower|
+      notifications.create(user_id: follower.id)
+    end
+  end  
   
   
   def get_profile_image
