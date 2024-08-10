@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -31,16 +30,14 @@ Rails.application.routes.draw do
     get "homes/about", to: "homes#about"
     get '/search', to: 'searches#search', as: 'search'
     resources :chats, only: [:show, :create, :destroy]
-    resource :map, only: [:show,:index]
+    resource :map, only: [:show, :index]
 
     resources :posts, only: [:index, :show, :edit, :new, :create, :destroy, :update] do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
-      
-
     end
 
-   
+    resources :notifications, only: [:update]
     
     resources :users do
       get 'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe'
